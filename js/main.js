@@ -33,8 +33,17 @@ function closeBtn() {
         $('#closeBtn').addClass('d-none');
 }
 
+
 searchBtn.addEventListener('click',()=>{
     searchBox.classList.replace('d-none','d-block')
     mainMeals.classList.add('d-none')
+    $('.contact').css('display','none')
     closeBtn()
 })
+
+function openContact(){
+    $('.contact').css('display','block')
+    searchBox.classList.replace('d-block','d-none')
+    mainMeals.classList.add('d-none')
+    closeBtn()
+}
