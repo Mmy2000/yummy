@@ -1,3 +1,6 @@
+let searchBtn = document.getElementById('searchBtn')
+let searchBox = document.getElementById('search')
+let mainMeals = document.getElementById('mainMeals')
 function openBtn() {
         $('.side-nav').animate({
             width: '260px'
@@ -29,3 +32,9 @@ function closeBtn() {
         $('#openBtn').removeClass('d-none');
         $('#closeBtn').addClass('d-none');
 }
+
+searchBtn.addEventListener('click',()=>{
+    searchBox.classList.replace('d-none','d-block')
+    mainMeals.classList.add('d-none')
+    closeBtn()
+})
