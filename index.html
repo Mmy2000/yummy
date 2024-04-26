@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <section class="side-nav p-4 d-flex flex-column justify-content-between">
+    <section class="side-nav p-4 d-flex flex-column justify-content-between overflow-hidden">
         <div class="taps">
             <ul class="list-unstyled overflow-hidden ">
                 <li class="py-2 position-relative cursor-pointer">Search</li>
@@ -34,8 +34,8 @@
     </section>
     <section class="close d-flex align-items-center justify-content-between flex-column px-2 bg-white py-4 text-black">
         <img src="img/logo.png" alt="">
-        <i class="fa-solid open-close-icon fa-2x fa-align-justify d-none"></i>
-        <i class="fa-solid fa-xmark fa-2x fa-align-justify"></i>
+        <i id="openBtn" class="fa-solid open-close-icon fa-2x fa-align-justify "></i>
+        <i id="closeBtn" class="fa-solid fa-xmark fa-2x fa-align-justify d-none"></i>
         <div class="icons">
             <i class="fa-solid fa-globe d-block"></i>
             <i class="fa-solid fa-share-nodes"></i>

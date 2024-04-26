@@ -23,7 +23,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: 260px;
+    width: 0px;
     z-index: 99999;
     background-color: #0D0D0D;
 }
@@ -34,7 +34,7 @@
 .close{
     position: fixed;
     top: 0;
-    left: 260px;
+    left: 0px;
     bottom: 0;
     z-index: 99999;
     background-color: tomato;
