@@ -47,3 +47,11 @@ function openContact(){
     mainMeals.classList.add('d-none')
     closeBtn()
 }
+$(document).ready( ()=>{
+    $('.loading .spinner').fadeOut(500,()=>{
+        $('.loading').fadeOut(1000,()=>{
+            $('.loading').remove()
+            $('body').css('overflow-y', 'auto')
+        })
+    })
+})
