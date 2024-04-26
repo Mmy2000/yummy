@@ -18,3 +18,16 @@
 .area .inner{
     cursor: pointer;
 }
+.side-nav{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    z-index: 99999;
+    background-color: #0D0D0D;
+}
+.side-nav li{
+    top: 0;
+    cursor: pointer;
+}
