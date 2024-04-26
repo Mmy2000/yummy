@@ -15,7 +15,7 @@
  .img:hover .cover{
     transform: translateY(0%);
 }
-.area .inner{
+ .inner{
     cursor: pointer;
 }
 .side-nav{
@@ -43,4 +43,10 @@
 }
 .close i{
     cursor: pointer;
+}
+.contact{
+    display: none;
+}
+.search{
+    display: none;
 }
