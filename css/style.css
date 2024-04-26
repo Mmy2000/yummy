@@ -29,6 +29,7 @@
 }
 .side-nav li{
     cursor: pointer;
+    top: 300px;
 }
 .close{
     position: fixed;
