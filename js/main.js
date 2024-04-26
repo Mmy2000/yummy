@@ -10,6 +10,7 @@ function openBtn() {
                     top: 0
                 }, (i + 5) * 100)
             }
+            $('.nav-footer').animate({left:'0'},1050)
         $('.close').animate({
             left: '260px'
         })
@@ -24,6 +25,7 @@ function closeBtn() {
         $(".taps li").animate({
                 top: 300
             }, 500)
+            $('.nav-footer').animate({left:'-250px'},50)
         $('.close').animate({
             left: '0px'
         })

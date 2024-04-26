@@ -48,3 +48,7 @@
 .contact{
     display: none;
 }
+.nav-footer{
+    position: relative;
+    left: -250px;
+}
