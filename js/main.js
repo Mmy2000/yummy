@@ -90,10 +90,10 @@ async function searchByFLitter(term) {
 }
 
 function displayMeals(arr) {
-    let cartoona = "";
+    let mealsList = "";
 
     for (let i = 0; i < arr.length; i++) {
-        cartoona += `
+        mealsList += `
         <div class="col-md-3">
                     <div class="inner">
                         <div onclick="getMealDetails('${arr[i].idMeal}')" class="img position-relative overflow-hidden rounded-2">
@@ -107,7 +107,7 @@ function displayMeals(arr) {
         `
     }
 
-    rowData.innerHTML = cartoona
+    rowData.innerHTML = mealsList
 }
 
 async function getCategories() {
@@ -128,23 +128,23 @@ async function getArea() {
 }
 
 function displayArea(arr) {
-    let cartoona = "";
+    let areaList = "";
     for (let i = 0; i < arr.length; i++) {
-        cartoona += `<div class="col-md-3 text-white">
+        areaList += `<div class="col-md-3 text-white">
                     <div onclick="getAreaMeals('${arr[i].strArea}')" class="inner text-center ">
                         <i class="fa-solid fa-house-laptop fa-4x"></i>
                         <h3>${arr[i].strArea}</h3>
                     </div>
                 </div>`
     }
-    rowData.innerHTML = cartoona
+    rowData.innerHTML = areaList
 }
 
 function displayCategories(arr) {
-    let cartoona = "";
+    let categoriesList = "";
 
     for (let i = 0; i < arr.length; i++) {
-        cartoona += `
+        categoriesList += `
         <div class="col-md-3">
                     <div onclick="getCategoryMeals('${arr[i].strCategory}')" class="inner ">
                         <div class="img position-relative overflow-hidden rounded-2">
@@ -160,7 +160,7 @@ function displayCategories(arr) {
         `
     }
 
-    rowData.innerHTML = cartoona
+    rowData.innerHTML = categoriesList
 }
 async function getIngredients() {
     
@@ -172,10 +172,10 @@ async function getIngredients() {
 }
 
 function displayIngredients(arr) {
-    let cartoona = "";
+    let ingredientsList = "";
 
     for (let i = 0; i < arr.length; i++) {
-        cartoona += `
+        ingredientsList += `
         <div class="col-md-3">
                     <div onclick="getIngredientsMeals('${arr[i].strIngredient}')" class="inner text-white text-center">
                         <i class="fa-solid fa-drumstick-bite fa-4x"></i>
@@ -186,7 +186,7 @@ function displayIngredients(arr) {
         `
     }
 
-    rowData.innerHTML = cartoona
+    rowData.innerHTML = ingredientsList
 }
 showCat.addEventListener('click', () => {
     getCategories()
@@ -403,12 +403,12 @@ function repasswordValidation() {
     return document.getElementById("inputRepPassword").value == document.getElementById("inputPassword").value
 }
 
-async function getMealDetails(mealID) {
+async function getMealDetails(mealId) {
     
     $('.loading .spinner').fadeIn(500)
 
     searchContainer.innerHTML = "";
-    let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
+    let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
     respone = await respone.json();
 
     displayMealDetails(respone.meals[0])
