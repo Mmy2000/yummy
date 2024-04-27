@@ -48,11 +48,13 @@ function openContact(){
     closeBtn()
 }
 $(document).ready( ()=>{
-    $('.loading .spinner').fadeOut(500,()=>{
+    searchByName('').then( ()=>{
+        $('.loading .spinner').fadeOut(500,()=>{
         $('.loading').fadeOut(1000,()=>{
             $('.loading').remove()
             $('body').css('overflow-y', 'auto')
         })
+    })
     })
 })
 
@@ -76,9 +78,9 @@ function displayMeals(arr) {
         <div class="col-md-3">
                     <div class="inner">
                         <div class="img position-relative overflow-hidden rounded-2">
-                            <img class="w-100" src="img/1525876468.jpg" alt="">
+                            <img class="w-100" src="${arr[i].strMealThumb}" alt="">
                             <div class="cover position-absolute  d-flex align-items-center justify-content-center p-5">
-                                <h2>Sushi</h2>
+                                <h2>${arr[i].strMeal}</h2>
                             </div>
                         </div>
                     </div>
