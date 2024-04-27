@@ -48,11 +48,23 @@
             <i class="fa-solid fa-share-nodes"></i>
         </div>
     </section>
+    <section class="search d-none " id="search">
+        <div class="container p-5">
+            <div class="row p-5">
+                <div class="col-md-6">
+                    <input class="form-control " onkeyup="searchByName(this.value)" type="text" placeholder="Search by name">
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control "  type="text" placeholder="Search by first letter">
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="meals text-black" id="mainMeals">
         <div class="container p-5">
             <div class="row gy-4 " id="rowData">
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <div class="inner">
                         <div class="img position-relative overflow-hidden rounded-2">
                             <img class="w-100" src="img/1525876468.jpg" alt="">
@@ -61,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -129,18 +141,7 @@
             </div>
         </div>
     </section>
-    <section class="search d-none " id="search">
-        <div class="container p-5">
-            <div class="row p-5">
-                <div class="col-md-6">
-                    <input class="form-control " name="" type="text" placeholder="Search by name">
-                </div>
-                <div class="col-md-6">
-                    <input class="form-control " name="" type="text" placeholder="Search by first letter">
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <script src="js/jquery-3.7.0.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>

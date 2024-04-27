@@ -55,3 +55,36 @@ $(document).ready( ()=>{
         })
     })
 })
+
+async function searchByName(term) {
+    rowData.innerHTML = ""
+
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
+    response = await response.json()
+
+    response.meals ? displayMeals(response.meals) : displayMeals([])
+    mainMeals.classList.replace('d-none','d-block')
+    console.log(response.meals);
+
+}
+
+function displayMeals(arr) {
+    let cartoona = "";
+
+    for (let i = 0; i < arr.length; i++) {
+        cartoona += `
+        <div class="col-md-3">
+                    <div class="inner">
+                        <div class="img position-relative overflow-hidden rounded-2">
+                            <img class="w-100" src="img/1525876468.jpg" alt="">
+                            <div class="cover position-absolute  d-flex align-items-center justify-content-center p-5">
+                                <h2>Sushi</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `
+    }
+
+    rowData.innerHTML = cartoona
+}
