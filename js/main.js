@@ -200,17 +200,21 @@ function displayIngredients(arr) {
 showCat.addEventListener('click', () => {
     getCategories()
     closeBtn()
+    mainMeals.classList.replace('d-none','d-block')
+    searchBox.classList.replace('d-block', 'd-none')
 })
 showArea.addEventListener('click', () => {
     getArea()
     closeBtn()
-    $('.contact').css('display', 'none')
+    mainMeals.classList.replace('d-none','d-block')
+    searchBox.classList.replace('d-block', 'd-none')
 
 })
 showIngredients.addEventListener('click', () => {
     getIngredients()
     closeBtn()
-    $('.contact').css('display', 'none')
+    mainMeals.classList.replace('d-none','d-block')
+    searchBox.classList.replace('d-block', 'd-none')
 
 })
 
@@ -316,7 +320,6 @@ inputName.addEventListener("focus", () => {
     })
     // $('.contact').css('display', 'block')
     // searchBox.classList.replace('d-block', 'd-none')
-    // mainMeals.classList.add('d-none')
     closeBtn()
 }
 
