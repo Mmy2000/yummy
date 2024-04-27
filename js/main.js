@@ -5,6 +5,7 @@ let rowData = document.getElementById("rowData");
 let searchContainer = document.getElementById("searchContainer");
 let showCat = document.getElementById("showCat");
 let showArea = document.getElementById("showArea");
+let showIngredients = document.getElementById("showIngredients");
 
 function openBtn() {
         $('.side-nav').animate({
@@ -162,6 +163,37 @@ function displayCategories(arr) {
 
     rowData.innerHTML = cartoona
 }
+async function getIngredients() {
+    rowData.innerHTML = ""
+
+    searchContainer.innerHTML = "";
+
+    let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
+    respone = await respone.json()
+    console.log(respone.meals);
+
+    displayIngredients(respone.meals.slice(0, 20))
+
+}
+
+
+function displayIngredients(arr) {
+    let cartoona = "";
+
+    for (let i = 0; i < arr.length; i++) {
+        cartoona += `
+        <div class="col-md-3">
+                    <div class="inner text-white text-center">
+                        <i class="fa-solid fa-drumstick-bite fa-4x"></i>
+                        <h3 class="mt-1">${arr[i].strIngredient}</h3>
+                        <p>${arr[i].strDescription.split(" ").slice(0,20).join(" ")}</p>
+                    </div>
+                </div>
+        `
+    }
+
+    rowData.innerHTML = cartoona
+}
 showCat.addEventListener('click',()=>{
     getCategories()
     closeBtn()
@@ -169,6 +201,11 @@ showCat.addEventListener('click',()=>{
 })
 showArea.addEventListener('click',()=>{
     getArea()
+    closeBtn()
+
+})
+showIngredients.addEventListener('click',()=>{
+    getIngredients()
     closeBtn()
 
 })
