@@ -200,20 +200,20 @@ function displayIngredients(arr) {
 showCat.addEventListener('click', () => {
     getCategories()
     closeBtn()
-    mainMeals.classList.replace('d-none','d-block')
+    mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 })
 showArea.addEventListener('click', () => {
     getArea()
     closeBtn()
-    mainMeals.classList.replace('d-none','d-block')
+    mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 
 })
 showIngredients.addEventListener('click', () => {
     getIngredients()
     closeBtn()
-    mainMeals.classList.replace('d-none','d-block')
+    mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 
 })
@@ -288,14 +288,14 @@ function openContact() {
                 <div>
                     <button id="submitBtn" disabled class="btn btn-outline-danger px-2">Submit</button>
                 </div>`
-                
-let inputName = document.getElementById('inputName')
-let inputPhone = document.getElementById('inputPhone')
-let inputPassword = document.getElementById('inputPassword')
-let inputEmail = document.getElementById('inputEmail')
-let inputAge = document.getElementById('inputAge')
-let inputRepPassword = document.getElementById('inputRepPassword')
-inputName.addEventListener("focus", () => {
+
+    let inputName = document.getElementById('inputName')
+    let inputPhone = document.getElementById('inputPhone')
+    let inputPassword = document.getElementById('inputPassword')
+    let inputEmail = document.getElementById('inputEmail')
+    let inputAge = document.getElementById('inputAge')
+    let inputRepPassword = document.getElementById('inputRepPassword')
+    inputName.addEventListener("focus", () => {
         nameInputTouched = true
     })
 
@@ -433,8 +433,9 @@ async function getMealDetails(mealID) {
     displayMealDetails(respone.meals[0])
 
 }
+
 function displayMealDetails(meal) {
-    
+
     searchContainer.innerHTML = "";
 
 
@@ -446,8 +447,7 @@ function displayMealDetails(meal) {
         }
     }
 
-    let tags = meal.strTags?.split(",")
-    // let tags = meal.strTags.split(",")
+    let tags = meal.strTags ?.split(",")
     if (!tags) tags = []
 
     let tagsStr = ''
