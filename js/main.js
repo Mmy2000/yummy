@@ -52,8 +52,6 @@ searchBtn.addEventListener('click', () => {
     closeBtn()
 })
 
-
-
 $(document).ready(() => {
     searchByName('').then(() => {
         $('.loading .spinner').fadeOut(500, () => {
@@ -168,17 +166,13 @@ function displayCategories(arr) {
 }
 async function getIngredients() {
     rowData.innerHTML = ""
-
     searchContainer.innerHTML = "";
-
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
     respone = await respone.json()
     console.log(respone.meals);
-
     displayIngredients(respone.meals.slice(0, 20))
 
 }
-
 
 function displayIngredients(arr) {
     let cartoona = "";
@@ -223,25 +217,18 @@ async function getCategoryMeals(category) {
 
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     response = await response.json()
-
-
     displayMeals(response.meals.slice(0, 20))
 
 }
-
-
 
 async function getAreaMeals(area) {
     rowData.innerHTML = ""
 
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
     response = await response.json()
-
-
     displayMeals(response.meals.slice(0, 20))
 
 }
-
 
 async function getIngredientsMeals(ingredients) {
     rowData.innerHTML = ""
@@ -249,9 +236,7 @@ async function getIngredientsMeals(ingredients) {
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
     response = await response.json()
 
-
     displayMeals(response.meals.slice(0, 20))
-
 }
 
 function openContact() {
@@ -385,7 +370,6 @@ function inputsValidation() {
         }
     }
 
-
     if (nameValidation() &&
         emailValidation() &&
         phoneValidation() &&
@@ -397,7 +381,6 @@ function inputsValidation() {
         submitBtn.setAttribute("disabled", true)
     }
 }
-
 
 function nameValidation() {
     return (/^[a-zA-Z ]+$/.test(document.getElementById("inputName").value))
@@ -437,10 +420,7 @@ async function getMealDetails(mealID) {
 }
 
 function displayMealDetails(meal) {
-
     searchContainer.innerHTML = "";
-
-
     let ingredients = ``
 
     for (let i = 1; i <= 20; i++) {
@@ -457,9 +437,6 @@ function displayMealDetails(meal) {
         tagsStr += `
         <li class="alert alert-danger m-2 p-1">${tags[i]}</li>`
     }
-
-
-
     let cartoona = `
     <div class="col-md-4 text-white text-start">
                     <div class="inner">
