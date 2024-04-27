@@ -69,6 +69,18 @@ async function searchByName(term) {
     console.log(response.meals);
 
 }
+async function searchByFLitter(term) {
+    rowData.innerHTML = ""
+
+    term == "" ? term = "a" : "";
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`)
+    response = await response.json()
+
+    response.meals ? displayMeals(response.meals) : displayMeals([])
+    mainMeals.classList.replace('d-none','d-block')
+    console.log(response.meals);
+
+}
 
 function displayMeals(arr) {
     let cartoona = "";
