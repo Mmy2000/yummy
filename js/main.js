@@ -52,12 +52,8 @@ searchBtn.addEventListener('click', () => {
     closeBtn()
 })
 
-function openContact() {
-    $('.contact').css('display', 'block')
-    searchBox.classList.replace('d-block', 'd-none')
-    mainMeals.classList.add('d-none')
-    closeBtn()
-}
+
+
 $(document).ready(() => {
     searchByName('').then(() => {
         $('.loading .spinner').fadeOut(500, () => {
@@ -204,16 +200,17 @@ function displayIngredients(arr) {
 showCat.addEventListener('click', () => {
     getCategories()
     closeBtn()
-
 })
 showArea.addEventListener('click', () => {
     getArea()
     closeBtn()
+    $('.contact').css('display', 'none')
 
 })
 showIngredients.addEventListener('click', () => {
     getIngredients()
     closeBtn()
+    $('.contact').css('display', 'none')
 
 })
 
@@ -252,7 +249,42 @@ async function getIngredientsMeals(ingredients) {
     displayMeals(response.meals.slice(0, 20))
 
 }
-let submitBtn = document.getElementById('submitBtn')
+
+function openContact() {
+    rowData.innerHTML = `<div class="col-md-6 ">
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="text" placeholder="Enter your name" id="inputName">
+                    <div id="nameAlert" class="alert alert-danger mx-4 w-100 mx-4 d-none ">
+                        Special characters and numbers not allowed
+                    </div>
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="text" placeholder="Enter your phone" id="inputPhone">
+                    <div id="phoneAlert" class="alert alert-danger mx-4 w-100  d-none">
+                        Enter valid Phone Number
+                    </div>
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="password" placeholder="Enter your password"
+                        id="inputPassword">
+                    <div id="passwordAlert" class="alert alert-danger mx-4 w-100  d-none">
+                        Enter valid password *Minimum eight characters, at least one letter and one number:*
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="email" placeholder="Enter your email" id="inputEmail">
+                    <div id="emailAlert" class="alert alert-danger mx-4 w-100  d-none">
+                        Email not valid *exemple@yyy.zzz
+                    </div>
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="number" placeholder="Enter your age" id="inputAge">
+                    <div id="ageAlert" class="alert alert-danger mx-4 w-100  d-none">
+                        Enter valid age
+                    </div>
+                    <input class="form-control m-4" onkeyup="inputsValidation()" type="password" placeholder="Repeat our password"
+                        id="inputRepPassword">
+                    <div id="repasswordAlert" class="alert alert-danger mx-4 w-100  d-none">
+                        Enter valid repassword
+                    </div>
+                </div>
+                <div>
+                    <button id="submitBtn" disabled class="btn btn-outline-danger px-2">Submit</button>
+                </div>`
+                
 let inputName = document.getElementById('inputName')
 let inputPhone = document.getElementById('inputPhone')
 let inputPassword = document.getElementById('inputPassword')
@@ -282,6 +314,11 @@ inputName.addEventListener("focus", () => {
     inputRepPassword.addEventListener("focus", () => {
         repasswordInputTouched = true
     })
+    // $('.contact').css('display', 'block')
+    // searchBox.classList.replace('d-block', 'd-none')
+    // mainMeals.classList.add('d-none')
+    closeBtn()
+}
 
 let nameInputTouched = false;
 let emailInputTouched = false;
