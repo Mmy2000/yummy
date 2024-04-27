@@ -133,7 +133,7 @@ function displayArea(arr){
     let cartoona = "";
     for (let i = 0; i < arr.length; i++) {
         cartoona += `<div class="col-md-3 text-white">
-                    <div class="inner text-center ">
+                    <div onclick="getAreaMeals('${arr[i].strArea}')" class="inner text-center ">
                         <i class="fa-solid fa-house-laptop fa-4x"></i>
                         <h3>${arr[i].strArea}</h3>
                     </div>
@@ -147,7 +147,7 @@ function displayCategories(arr) {
     for (let i = 0; i < arr.length; i++) {
         cartoona += `
         <div class="col-md-3">
-                    <div class="inner ">
+                    <div onclick="getCategoryMeals('${arr[i].strCategory}')" class="inner ">
                         <div class="img position-relative overflow-hidden rounded-2">
                             <img class="w-100" src="${arr[i].strCategoryThumb}" alt="">
                             <div
@@ -183,7 +183,7 @@ function displayIngredients(arr) {
     for (let i = 0; i < arr.length; i++) {
         cartoona += `
         <div class="col-md-3">
-                    <div class="inner text-white text-center">
+                    <div onclick="getIngredientsMeals('${arr[i].strIngredient}')" class="inner text-white text-center">
                         <i class="fa-solid fa-drumstick-bite fa-4x"></i>
                         <h3 class="mt-1">${arr[i].strIngredient}</h3>
                         <p>${arr[i].strDescription.split(" ").slice(0,20).join(" ")}</p>
@@ -209,3 +209,39 @@ showIngredients.addEventListener('click',()=>{
     closeBtn()
 
 })
+
+async function getCategoryMeals(category) {
+    rowData.innerHTML = ""
+
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+    response = await response.json()
+
+
+    displayMeals(response.meals.slice(0, 20))
+
+}
+
+
+
+async function getAreaMeals(area) {
+    rowData.innerHTML = ""
+
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
+    response = await response.json()
+
+
+    displayMeals(response.meals.slice(0, 20))
+
+}
+
+
+async function getIngredientsMeals(ingredients) {
+    rowData.innerHTML = ""
+
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
+    response = await response.json()
+
+
+    displayMeals(response.meals.slice(0, 20))
+
+}
