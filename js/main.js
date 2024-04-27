@@ -1,6 +1,7 @@
 let searchBtn = document.getElementById('searchBtn')
 let searchBox = document.getElementById('search')
 let mainMeals = document.getElementById('mainMeals')
+let rowData = document.getElementById("rowData");
 function openBtn() {
         $('.side-nav').animate({
             width: '260px'
@@ -60,12 +61,15 @@ $(document).ready( ()=>{
 
 async function searchByName(term) {
     rowData.innerHTML = ""
+    $('.loading').fadeIn(500)
 
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
     response = await response.json()
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
+    $('.loading').fadeOut(500)
     mainMeals.classList.replace('d-none','d-block')
+    
     console.log(response.meals);
 
 }
@@ -99,6 +103,6 @@ function displayMeals(arr) {
                 </div>
         `
     }
-
+    
     rowData.innerHTML = cartoona
 }
