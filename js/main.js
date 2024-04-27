@@ -425,12 +425,14 @@ function repasswordValidation() {
 
 async function getMealDetails(mealID) {
     rowData.innerHTML = ""
+    $('.loading .spinner').fadeIn(500)
 
     searchContainer.innerHTML = "";
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`);
     respone = await respone.json();
 
     displayMealDetails(respone.meals[0])
+    $('.loading .spinner').fadeOut(500)
 
 }
 
