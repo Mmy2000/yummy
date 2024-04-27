@@ -8,59 +8,63 @@ let showArea = document.getElementById("showArea");
 let showIngredients = document.getElementById("showIngredients");
 
 function openBtn() {
-        $('.side-nav').animate({
-            width: '260px'
-        })
-            for (let i = 0; i < 5; i++) {
-                $(".taps li").eq(i).animate({
-                    top: 0
-                }, (i + 5) * 100)
-            }
-            $('.nav-footer').animate({left:'0'},1050)
-        $('.close').animate({
-            left: '260px'
-        })
-        $('#openBtn').addClass('d-none');
-        $('#closeBtn').removeClass('d-none');
+    $('.side-nav').animate({
+        width: '260px'
+    })
+    for (let i = 0; i < 5; i++) {
+        $(".taps li").eq(i).animate({
+            top: 0
+        }, (i + 5) * 100)
+    }
+    $('.nav-footer').animate({
+        left: '0'
+    }, 1050)
+    $('.close').animate({
+        left: '260px'
+    })
+    $('#openBtn').addClass('d-none');
+    $('#closeBtn').removeClass('d-none');
 }
 
 function closeBtn() {
-        $('.side-nav').animate({
-            width: '0px'
-        })
-        $(".taps li").animate({
-                top: 300
-            }, 500)
-            $('.nav-footer').animate({left:'-250px'},50)
-        $('.close').animate({
-            left: '0px'
-        })
-        $('#openBtn').removeClass('d-none');
-        $('#closeBtn').addClass('d-none');
+    $('.side-nav').animate({
+        width: '0px'
+    })
+    $(".taps li").animate({
+        top: 300
+    }, 500)
+    $('.nav-footer').animate({
+        left: '-250px'
+    }, 50)
+    $('.close').animate({
+        left: '0px'
+    })
+    $('#openBtn').removeClass('d-none');
+    $('#closeBtn').addClass('d-none');
 }
 
 
-searchBtn.addEventListener('click',()=>{
-    searchBox.classList.replace('d-none','d-block')
+searchBtn.addEventListener('click', () => {
+    searchBox.classList.replace('d-none', 'd-block')
     mainMeals.classList.add('d-none')
-    $('.contact').css('display','none')
+    $('.contact').css('display', 'none')
     closeBtn()
 })
 
-function openContact(){
-    $('.contact').css('display','block')
-    searchBox.classList.replace('d-block','d-none')
+function openContact() {
+    $('.contact').css('display', 'block')
+    searchBox.classList.replace('d-block', 'd-none')
     mainMeals.classList.add('d-none')
     closeBtn()
 }
-$(document).ready( ()=>{
-    searchByName('').then( ()=>{
-        $('.loading .spinner').fadeOut(500,()=>{
-        $('.loading').fadeOut(1000,()=>{
-            $('.loading').remove()
-            $('body').css('overflow-y', 'auto')
+$(document).ready(() => {
+    searchByName('').then(() => {
+        $('.loading .spinner').fadeOut(500, () => {
+            $('.loading').fadeOut(1000, () => {
+                $('.loading').remove()
+                $('body').css('overflow-y', 'auto')
+            })
         })
-    })
     })
 })
 
@@ -73,8 +77,8 @@ async function searchByName(term) {
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
     $('.loading').fadeOut(500)
-    mainMeals.classList.replace('d-none','d-block')
-    
+    mainMeals.classList.replace('d-none', 'd-block')
+
     console.log(response.meals);
 
 }
@@ -86,7 +90,7 @@ async function searchByFLitter(term) {
     response = await response.json()
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
-    mainMeals.classList.replace('d-none','d-block')
+    mainMeals.classList.replace('d-none', 'd-block')
 
 }
 
@@ -107,7 +111,7 @@ function displayMeals(arr) {
                 </div>
         `
     }
-    
+
     rowData.innerHTML = cartoona
 }
 
@@ -121,7 +125,7 @@ async function getCategories() {
     displayCategories(response.categories)
 
 }
-async function getArea(){
+async function getArea() {
     rowData.innerHTML = ""
     searchContainer.innerHTML = "";
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
@@ -129,7 +133,8 @@ async function getArea(){
     console.log(response.meals);
     displayArea(response.meals)
 }
-function displayArea(arr){
+
+function displayArea(arr) {
     let cartoona = "";
     for (let i = 0; i < arr.length; i++) {
         cartoona += `<div class="col-md-3 text-white">
@@ -141,6 +146,7 @@ function displayArea(arr){
     }
     rowData.innerHTML = cartoona
 }
+
 function displayCategories(arr) {
     let cartoona = "";
 
@@ -194,17 +200,17 @@ function displayIngredients(arr) {
 
     rowData.innerHTML = cartoona
 }
-showCat.addEventListener('click',()=>{
+showCat.addEventListener('click', () => {
     getCategories()
     closeBtn()
 
 })
-showArea.addEventListener('click',()=>{
+showArea.addEventListener('click', () => {
     getArea()
     closeBtn()
 
 })
-showIngredients.addEventListener('click',()=>{
+showIngredients.addEventListener('click', () => {
     getIngredients()
     closeBtn()
 
@@ -244,4 +250,36 @@ async function getIngredientsMeals(ingredients) {
 
     displayMeals(response.meals.slice(0, 20))
 
+}
+
+
+
+
+
+
+
+
+
+function nameValidation() {
+    return (/^[a-zA-Z ]+$/.test(document.getElementById("nameInput").value))
+}
+
+function emailValidation() {
+    return (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(document.getElementById("emailInput").value))
+}
+
+function phoneValidation() {
+    return (/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(document.getElementById("phoneInput").value))
+}
+
+function ageValidation() {
+    return (/^(0?[1-9]|[1-9][0-9]|[1][1-9][1-9]|200)$/.test(document.getElementById("ageInput").value))
+}
+
+function passwordValidation() {
+    return (/^(?=.*\d)(?=.*[a-z])[0-9a-zA-Z]{8,}$/.test(document.getElementById("passwordInput").value))
+}
+
+function repasswordValidation() {
+    return document.getElementById("repasswordInput").value == document.getElementById("passwordInput").value
 }

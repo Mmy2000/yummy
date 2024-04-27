@@ -22,7 +22,7 @@
         <div class="taps">
             <ul class="list-unstyled overflow-hidden ">
                 <li class="py-2 position-relative cursor-pointer" id="searchBtn">Search</li>
-                <li  class="py-2 position-relative cursor-pointer" id="showCat">Categories</li>
+                <li class="py-2 position-relative cursor-pointer" id="showCat">Categories</li>
                 <li class="py-2 position-relative cursor-pointer" id="showArea">Area</li>
                 <li class="py-2 position-relative cursor-pointer" id="showIngredients">Ingredients</li>
                 <li onclick="openContact()" class="py-2 position-relative cursor-pointer">Contact us</li>
@@ -62,7 +62,7 @@
             </div>
         </div>
     </section>
-    
+
     <section class="meals text-black" id="mainMeals">
         <div class="container p-5">
             <div class="row gy-4 " id="rowData">
@@ -129,14 +129,34 @@
         <div class="container p-5">
             <div class="row p-5 text-center">
                 <div class="col-md-6">
-                    <input class="form-control m-4" type="text" placeholder="Enter your name" id="">
-                    <input class="form-control m-4" type="text" placeholder="Enter your phone" id="">
-                    <input class="form-control m-4" type="password" placeholder="Enter your password" id="">
+                    <input class="form-control m-4" type="text" placeholder="Enter your name" id="inputName">
+                    <div id="nameAlert" class="alert alert-danger w-100 mx-4 d-none ">
+                        Special characters and numbers not allowed
+                    </div>
+                    <input class="form-control m-4" type="text" placeholder="Enter your phone" id="inputPhone">
+                    <div id="phoneAlert" class="alert alert-danger w-100 mt-2 d-none">
+                    Enter valid Phone Number
+                </div>
+                    <input class="form-control m-4" type="password" placeholder="Enter your password"
+                        id="inputPassword">
+                        <div id="passwordAlert" class="alert alert-danger w-100 mt-2 d-none">
+                    Enter valid password *Minimum eight characters, at least one letter and one number:*
+                </div>
                 </div>
                 <div class="col-md-6">
-                    <input class="form-control m-4" type="email" placeholder="Enter your email" id="">
-                    <input class="form-control m-4" type="number" placeholder="Enter your age" id="">
-                    <input class="form-control m-4" type="password" placeholder="Repeat our password" id="">
+                    <input class="form-control m-4" type="email" placeholder="Enter your email" id="inputEmail">
+                    <div id="emailAlert" class="alert alert-danger w-100 mt-2 d-none">
+                    Email not valid *exemple@yyy.zzz
+                </div>
+                    <input class="form-control m-4" type="number" placeholder="Enter your age" id="inputAge">
+                    <div id="ageAlert" class="alert alert-danger w-100 mt-2 d-none">
+                    Enter valid age
+                </div>
+                    <input class="form-control m-4" type="password" placeholder="Repeat our password"
+                        id="inputRepPassword">
+                        <div id="repasswordAlert" class="alert alert-danger w-100 mt-2 d-none">
+                    Enter valid repassword 
+                </div>
                 </div>
                 <div>
                     <button id="submitBtn" disabled class="btn btn-outline-danger px-2">Submit</button>
