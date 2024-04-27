@@ -2,6 +2,10 @@ let searchBtn = document.getElementById('searchBtn')
 let searchBox = document.getElementById('search')
 let mainMeals = document.getElementById('mainMeals')
 let rowData = document.getElementById("rowData");
+let searchContainer = document.getElementById("searchContainer");
+let showCat = document.getElementById("showCat");
+let showArea = document.getElementById("showArea");
+
 function openBtn() {
         $('.side-nav').animate({
             width: '260px'
@@ -82,7 +86,6 @@ async function searchByFLitter(term) {
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
     mainMeals.classList.replace('d-none','d-block')
-    console.log(response.meals);
 
 }
 
@@ -106,3 +109,66 @@ function displayMeals(arr) {
     
     rowData.innerHTML = cartoona
 }
+
+async function getCategories() {
+    rowData.innerHTML = ""
+    searchContainer.innerHTML = "";
+
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+    response = await response.json()
+
+    displayCategories(response.categories)
+
+}
+async function getArea(){
+    rowData.innerHTML = ""
+    searchContainer.innerHTML = "";
+    let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
+    response = await response.json()
+    console.log(response.meals);
+    displayArea(response.meals)
+}
+function displayArea(arr){
+    let cartoona = "";
+    for (let i = 0; i < arr.length; i++) {
+        cartoona += `<div class="col-md-3 text-white">
+                    <div class="inner text-center ">
+                        <i class="fa-solid fa-house-laptop fa-4x"></i>
+                        <h3>${arr[i].strArea}</h3>
+                    </div>
+                </div>`
+    }
+    rowData.innerHTML = cartoona
+}
+function displayCategories(arr) {
+    let cartoona = "";
+
+    for (let i = 0; i < arr.length; i++) {
+        cartoona += `
+        <div class="col-md-3">
+                    <div class="inner ">
+                        <div class="img position-relative overflow-hidden rounded-2">
+                            <img class="w-100" src="${arr[i].strCategoryThumb}" alt="">
+                            <div
+                                class="cover position-absolute  d-flex flex-column align-items-center justify-content-center p-5">
+                                <h2>${arr[i].strCategory}</h2>
+                                <p>${arr[i].strCategoryDescription.split(" ").slice(0,15).join(" ")}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        `
+    }
+
+    rowData.innerHTML = cartoona
+}
+showCat.addEventListener('click',()=>{
+    getCategories()
+    closeBtn()
+
+})
+showArea.addEventListener('click',()=>{
+    getArea()
+    closeBtn()
+
+})
