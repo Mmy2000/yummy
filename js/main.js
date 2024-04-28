@@ -64,13 +64,13 @@ $(document).ready(() => {
 
 async function searchByName(term) {
     
-    $('.loading').fadeIn(500)
+    $('#loading').fadeIn(500)
 
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
     response = await response.json()
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
-    $('.loading').fadeOut(500)
+    $('#loading').fadeOut(500)
     mainMeals.classList.replace('d-none', 'd-block')
 
     console.log(response.meals);
@@ -405,11 +405,11 @@ function repasswordValidation() {
 async function getMealDetails(mealId) {
     
     $('.loading').fadeIn(500)
-    searchContainer.innerHTML = "";
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
     respone = await respone.json();
 
     displayMealDetails(respone.meals[0])
+    searchBox.classList.replace('d-block', 'd-none')
     $('.loading').fadeOut(500)
 }
 
