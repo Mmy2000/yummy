@@ -56,9 +56,12 @@ searchBtn.addEventListener('click', () => {
 
 $(document).ready(() => {
     searchByName('').then(() => {
-            $('.loading').fadeOut(1000, () => {
-                $('.loading').remove()
+            $('.loading .spinner').fadeOut(1000, () => {
+                $('.loading ').fadeOut(500,()=>{
+                    $('.loading').remove()
                 $('body').css('overflow-y', 'auto')
+                })
+                
             })
         })
     })
