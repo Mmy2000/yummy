@@ -53,24 +53,22 @@ searchBtn.addEventListener('click', () => {
 
 $(document).ready(() => {
     searchByName('').then(() => {
-        $('.loading .spinner').fadeOut(500, () => {
             $('.loading').fadeOut(1000, () => {
                 $('.loading').remove()
                 $('body').css('overflow-y', 'auto')
             })
         })
     })
-})
 
 async function searchByName(term) {
     
-    $('#loading').fadeIn(500)
+    $('.loading-screen').fadeIn(500)
 
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${term}`)
     response = await response.json()
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
-    $('#loading').fadeOut(500)
+    $('.loading-screen').fadeOut(500)
     mainMeals.classList.replace('d-none', 'd-block')
 
     console.log(response.meals);
@@ -78,12 +76,13 @@ async function searchByName(term) {
 }
 async function searchByFLitter(term) {
     
-
+     $('.loading-screen').fadeIn(500)
     term == "" ? term = "a" : "";
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${term}`)
     response = await response.json()
 
     response.meals ? displayMeals(response.meals) : displayMeals([])
+     $('.loading-screen').fadeOut(500)
     mainMeals.classList.replace('d-none', 'd-block')
 
 }
@@ -111,19 +110,21 @@ function displayMeals(arr) {
 
 async function getCategories() {
     
-
+     $('.loading-screen').fadeIn(500)
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`)
     response = await response.json()
 
     displayCategories(response.categories)
+     $('.loading-screen').fadeOut(500)
 
 }
 async function getArea() {
-    
+     $('.loading-screen').fadeIn(500)
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?a=list`)
     response = await response.json()
     console.log(response.meals);
     displayArea(response.meals)
+     $('.loading-screen').fadeOut(500)
 }
 
 function displayArea(arr) {
@@ -162,11 +163,12 @@ function displayCategories(arr) {
     rowData.innerHTML = categoriesList
 }
 async function getIngredients() {
-    
+     $('.loading-screen').fadeIn(500)
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/list.php?i=list`)
     respone = await respone.json()
     console.log(respone.meals);
     displayIngredients(respone.meals.slice(0, 20))
+     $('.loading-screen').fadeOut(500)
 
 }
 
@@ -190,12 +192,14 @@ function displayIngredients(arr) {
 showCat.addEventListener('click', () => {
     getCategories()
     closeBtn()
+     $('.loading-screen').fadeIn(500)
     mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 })
 showArea.addEventListener('click', () => {
     getArea()
     closeBtn()
+     $('.loading-screen').fadeIn(500)
     mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 
@@ -203,6 +207,7 @@ showArea.addEventListener('click', () => {
 showIngredients.addEventListener('click', () => {
     getIngredients()
     closeBtn()
+     $('.loading-screen').fadeIn(500)
     mainMeals.classList.replace('d-none', 'd-block')
     searchBox.classList.replace('d-block', 'd-none')
 
@@ -210,29 +215,32 @@ showIngredients.addEventListener('click', () => {
 
 async function getCategoryMeals(category) {
     
-
+     $('.loading-screen').fadeIn(500)
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
     response = await response.json()
     displayMeals(response.meals.slice(0, 20))
+     $('.loading-screen').fadeOut(500)
 
 }
 
 async function getAreaMeals(area) {
     
-
+     $('.loading-screen').fadeIn(500)
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${area}`)
     response = await response.json()
     displayMeals(response.meals.slice(0, 20))
+     $('.loading-screen').fadeOut(500)
 
 }
 
 async function getIngredientsMeals(ingredients) {
     
-
+     $('.loading-screen').fadeIn(500)
     let response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`)
     response = await response.json()
 
     displayMeals(response.meals.slice(0, 20))
+     $('.loading-screen').fadeOut(500)
 }
 
 function openContact() {
@@ -302,6 +310,9 @@ function openContact() {
     // $('.contact').css('display', 'block')
     // searchBox.classList.replace('d-block', 'd-none')
     closeBtn()
+     $('.loading-screen').fadeIn(500,()=>{
+         $('.loading-screen').fadeOut(500)
+     })
 }
 
 let nameInputTouched = false;
@@ -404,13 +415,13 @@ function repasswordValidation() {
 
 async function getMealDetails(mealId) {
     
-    $('.loading').fadeIn(500)
+    $('.loading-screen').fadeIn(500)
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
     respone = await respone.json();
 
     displayMealDetails(respone.meals[0])
     searchBox.classList.replace('d-block', 'd-none')
-    $('.loading').fadeOut(500)
+    $('.loading-screen').fadeOut(500)
 }
 
 function displayMealDetails(meal) {

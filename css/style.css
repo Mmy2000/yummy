@@ -62,6 +62,16 @@
     background-color: #302e2e;
     z-index: 9999999999999;
 }
+.loading-screen{
+  position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #302e2e;
+    z-index: 9999999999999;
+    display: none;
+}
 .spinner {
   margin: 100px auto;
   width: 40px;
