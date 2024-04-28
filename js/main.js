@@ -310,8 +310,8 @@ function openContact() {
     inputRepPassword.addEventListener("focus", () => {
         repasswordInputTouched = true
     })
-    // $('.contact').css('display', 'block')
-    // searchBox.classList.replace('d-block', 'd-none')
+    mainMeals.classList.replace('d-none', 'd-block')
+    searchBox.classList.replace('d-block', 'd-none')
     closeBtn()
      $('.loading-screen').fadeIn(500,()=>{
          $('.loading-screen').fadeOut(500)
