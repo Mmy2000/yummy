@@ -49,6 +49,9 @@ searchBtn.addEventListener('click', () => {
     mainMeals.classList.add('d-none')
     $('.contact').css('display', 'none')
     closeBtn()
+     $('.loading-screen').fadeIn(500,()=>{
+         $('.loading-screen').fadeOut(500)
+     })
 })
 
 $(document).ready(() => {
