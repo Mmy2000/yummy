@@ -44,7 +44,6 @@ function closeBtn() {
     $('#closeBtn').addClass('d-none');
 }
 
-
 searchBtn.addEventListener('click', () => {
     searchBox.classList.replace('d-none', 'd-block')
     mainMeals.classList.add('d-none')
@@ -405,15 +404,13 @@ function repasswordValidation() {
 
 async function getMealDetails(mealId) {
     
-    $('.loading .spinner').fadeIn(500)
-
+    $('.loading').fadeIn(500)
     searchContainer.innerHTML = "";
     let respone = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
     respone = await respone.json();
 
     displayMealDetails(respone.meals[0])
-    $('.loading .spinner').fadeOut(500)
-
+    $('.loading').fadeOut(500)
 }
 
 function displayMealDetails(meal) {
@@ -434,7 +431,7 @@ function displayMealDetails(meal) {
         tagsStr += `
         <li class="alert alert-danger m-2 p-1">${tags[i]}</li>`
     }
-    let cartoona = `
+    let mealDetails = `
     <div class="col-md-4 text-white text-start">
                     <div class="inner">
                         <img class="w-100" src="${meal.strMealThumb}" alt="">
@@ -468,5 +465,5 @@ function displayMealDetails(meal) {
 
                 </div>`
 
-    rowData.innerHTML = cartoona
+    rowData.innerHTML = mealDetails
 }
